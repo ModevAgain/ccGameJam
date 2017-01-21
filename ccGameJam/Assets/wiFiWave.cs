@@ -13,8 +13,6 @@ public class wiFiWave : MonoBehaviour {
     Material transparentMaterial;
     [SerializeField]
     float speed;
-    [SerializeField]
-    GameObject child;
 
     // Use this for initialization
     void Start () {
@@ -25,7 +23,6 @@ public class wiFiWave : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        child = transform.GetChild(0).gameObject;
         transform.position = Vector3.Lerp(transform.position, transform.GetChild(0).transform.position, speed);
 
 	}
@@ -44,10 +41,14 @@ public class wiFiWave : MonoBehaviour {
         {
 
             color = GetComponent<Renderer>().material.color;
-            Debug.Log(color);
             color.a -= transparancy;
             GetComponent<Renderer>().material.color = color;
-            Debug.Log(color);
+
+        }
+
+        if(other.gameObject.tag == "goal")
+        {
+            other.gameObject.GetComponent<goalScript>().registerWave(GetComponent<Renderer>().material.color.a);
         }
     }
 }
