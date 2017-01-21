@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class router : MonoBehaviour {
 
-    int waveCount = 0;
-    
     [SerializeField]
     GameObject WiFiWaveSphere;
     [SerializeField]
@@ -23,25 +21,34 @@ public class router : MonoBehaviour {
     public bool routerActive = false;
     [SerializeField]
     GameObject UIHolder;
+    int waveCounter = 1;
+    
         
 
 	// Use this for initialization
 	void Start () {
-        
+
         mainCamera = Camera.main;
         topDownCam = GameObject.Find("TopDownCam").GetComponent<Camera>();
         topDownCam.gameObject.SetActive(false);
+        List<List<GameObject>> waveHolderList = new List<List<GameObject>>();
     }
 	
 	// Update is called once per frame
-	void Update () {
-
+	void Update () {        
 
         if (Input.GetKeyDown(KeyCode.E))
         {
             routerActive = false;
             UIHolder.SetActive(false);
-            waveCount = 0;
+            waveCounter = 1;
+            for (int i = 0; i < waveCounter; i++)
+            {                
+                if (GameObject.Find("wave" + i).transform.GetChild(i) == null)
+                {
+                    Destroy(GameObject.Find("wave" + i));
+                }
+            }
         }
 
         if (routerActive)
@@ -68,21 +75,20 @@ public class router : MonoBehaviour {
 
     }
 
-
+ 
 
     void instantiateSpheres()
     {
-        
-        
-        float x;    
+        GameObject wave = new GameObject();
+
+        float x;
         float y = transform.position.y;        
         float z;
 
         float angle = 20f;
 
         Vector3 routerPosition = transform.position;
-
-        
+                
 
         for (int i = 0; i < (sphereCount + 1); i++)
         {
@@ -93,17 +99,17 @@ public class router : MonoBehaviour {
             temp.transform.LookAt(transform.position);
 
             angle += (360f / sphereCount);
+            temp.transform.parent = wave.transform;
+            wave.transform.parent = gameObject.transform;
+            wave.name = "wave" + waveCounter;           
         }
-
-
-
         
-
-        for (int i = 0; i < sphereCount; i++)
-        {
-
-        }
         respawnTimer = 0;
+        waveCounter++;
 
+        //for (int i = 0; i < sphereCount; i++)
+        //{
+
+        //}
     }
 }
