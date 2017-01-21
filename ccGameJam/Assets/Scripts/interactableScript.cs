@@ -48,6 +48,7 @@ public class interactableScript : MonoBehaviour {
             Destroy(gameObject.GetComponent<Rigidbody>());
             transform.parent = other.transform.parent;
             transform.position = other.transform.position;
+            transform.rotation = other.transform.rotation;
         }
     }
 }

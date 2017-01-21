@@ -5,6 +5,9 @@ using UnityEngine;
 public class router : MonoBehaviour {
 
     int waveCount = 0;
+
+    [SerializeField]
+    AudioSource emp;
     
     [SerializeField]
     GameObject WiFiWaveSphere;
@@ -102,12 +105,9 @@ public class router : MonoBehaviour {
 
 
 
+        emp.Play();
+
         
-
-        for (int i = 0; i < sphereCount; i++)
-        {
-
-        }
         respawnTimer = 0;
 
     }

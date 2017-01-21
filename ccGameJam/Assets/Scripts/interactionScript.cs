@@ -31,7 +31,7 @@ public class interactionScript : MonoBehaviour {
 
         if(Physics.Raycast(crosshairObject.transform.position, crosshairObject.transform.forward,out hit))
         {
-            if(hit.collider.tag == "pickable")
+            if(hit.collider.tag == "pickable" || hit.collider.tag == "repeater")
             {
                 hit.transform.GetComponent<interactableScript>().getPickedUp(pickedUpHolder.transform.position);
                 hit.transform.parent = pickedUpHolder.transform;
