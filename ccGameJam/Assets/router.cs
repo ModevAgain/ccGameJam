@@ -48,6 +48,7 @@ public class router : MonoBehaviour {
     {
 
         float x;
+        float y = transform.position.y;
         float z;
 
         float angle = 20f;
