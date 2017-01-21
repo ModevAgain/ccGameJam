@@ -50,7 +50,11 @@ public class interactableScript : MonoBehaviour {
             Destroy(gameObject.GetComponent<Rigidbody>());
             transform.parent = other.transform.parent;
             transform.position = other.transform.position;
+<<<<<<< HEAD
             gameObject.GetComponent<interactionScript>().ShowOutline(new Color(1, 0, 0, 0.5f), gameObject);
+=======
+            transform.rotation = other.transform.rotation;
+>>>>>>> origin/moe_working
         }
     }
 }
