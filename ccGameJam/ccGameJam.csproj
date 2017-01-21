@@ -85,9 +85,9 @@
     <Compile Include="Assets\Scripts\interactableScript.cs" />
     <Compile Include="Assets\Scripts\interactionScript.cs" />
     <Compile Include="Assets\Scripts\reflector.cs" />
+    <Compile Include="Assets\Scripts\repeater.cs" />
     <Compile Include="Assets\Scripts\router.cs" />
     <Compile Include="Assets\Scripts\wiFiWave.cs" />
-    <Compile Include="Assets\repeater.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Sink%2C Toilet and Radiator Set\Read Me\Hello! Read Me!.txt" />

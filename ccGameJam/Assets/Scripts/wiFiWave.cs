@@ -44,7 +44,7 @@ public class wiFiWave : MonoBehaviour {
             transparencyTimer += 1 * Time.deltaTime;
         }
 
-        if (GetComponent<Renderer>().material.color.a == 0)
+        if (GetComponent<Renderer>().material.color.a <= 0.05)
         {
             Destroy(gameObject);
         }
@@ -63,9 +63,10 @@ public class wiFiWave : MonoBehaviour {
 
     void OnCollisionEnter (Collision other)
     {
-        if(other.gameObject.tag == "repeater")
+        if(other.gameObject.tag == "repeater")   
         {
-
+            Debug.Log("tag funzt");
+            other.gameObject.GetComponent<repeater>().startRepeating(gameObject.GetComponent<Renderer>().material.color.a,transform.parent.gameObject);
         }
 
         if(other.gameObject.tag == "outsideWall")
