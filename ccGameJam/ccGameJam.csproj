@@ -52,9 +52,6 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -69,9 +66,6 @@
     </Reference>
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
@@ -90,9 +84,9 @@
     <Compile Include="Assets\Scripts\goalScript.cs" />
     <Compile Include="Assets\Scripts\interactableScript.cs" />
     <Compile Include="Assets\Scripts\interactionScript.cs" />
-    <Compile Include="Assets\drawEllipse.cs" />
-    <Compile Include="Assets\router.cs" />
-    <Compile Include="Assets\wiFiWave.cs" />
+    <Compile Include="Assets\Scripts\reflector.cs" />
+    <Compile Include="Assets\Scripts\router.cs" />
+    <Compile Include="Assets\Scripts\wiFiWave.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />

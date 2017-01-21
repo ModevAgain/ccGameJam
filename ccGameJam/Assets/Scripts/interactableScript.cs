@@ -21,7 +21,8 @@ public class interactableScript : MonoBehaviour {
 
     public void activateRouter()
     {
-
+        Debug.Log("test");
+        GetComponent<router>().routerActive = true;
         //TODO switch to TopDown
 
         
