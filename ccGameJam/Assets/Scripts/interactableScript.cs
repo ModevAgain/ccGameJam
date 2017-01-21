@@ -18,4 +18,13 @@ public class interactableScript : MonoBehaviour {
     {
         transform.position = position;
     }
+
+    public void activateRouter()
+    {
+
+        //TODO switch to TopDown
+
+        
+
+    }
 }

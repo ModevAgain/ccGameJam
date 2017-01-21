@@ -85,6 +85,9 @@
     <Compile Include="Assets\Scripts\interactionScript.cs" />
     <Compile Include="Assets\Scripts\waveScript.cs" />
     <Compile Include="Assets\Scripts\wifi.cs" />
+    <Compile Include="Assets\drawEllipse.cs" />
+    <Compile Include="Assets\router.cs" />
+    <Compile Include="Assets\wiFiWave.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />

@@ -39,6 +39,11 @@ public class interactionScript : MonoBehaviour {
                 hit.transform.GetComponent<interactableScript>().getPickedUp(pickedUpHolder.transform.position);
                 hit.transform.parent = pickedUpHolder.transform;
             }
+            if (hit.collider.tag == "router")
+            {
+                hit.transform.GetComponent<interactableScript>().activateRouter();
+                
+            }
         }
 
     }
