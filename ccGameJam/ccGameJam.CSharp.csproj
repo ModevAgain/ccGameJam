@@ -81,6 +81,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\goalScript.cs" />
     <Compile Include="Assets\Scripts\interactableScript.cs" />
     <Compile Include="Assets\Scripts\interactionScript.cs" />
     <Compile Include="Assets\Scripts\reflector.cs" />

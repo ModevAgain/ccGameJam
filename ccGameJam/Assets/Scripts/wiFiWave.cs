@@ -60,7 +60,6 @@ public class wiFiWave : MonoBehaviour {
 
     void OnCollisionEnter (Collision other)
     {
-        Debug.Log("asdf");
         if(other.gameObject.tag == "outsideWall")
         {
             Destroy(gameObject);
@@ -73,7 +72,6 @@ public class wiFiWave : MonoBehaviour {
                 lastWall = other.gameObject;
 
                 color = GetComponent<Renderer>().material.color;
-                Debug.Log("hit");
                 color.a -= wallTransparancy;
                 GetComponent<Renderer>().material.color = color;
             }            
@@ -81,7 +79,6 @@ public class wiFiWave : MonoBehaviour {
 
         if(other.gameObject.tag == "reflectable")
         {
-            Debug.Log("test");
             Vector3 normalVec = other.contacts[0].normal;
             Vector3 forwardVec = transform.forward;
             float ang = Vector3.Angle(forwardVec, normalVec); 
