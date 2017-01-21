@@ -4,33 +4,59 @@ using UnityEngine;
 
 public class router : MonoBehaviour {
 
+    int waveCount = 0;
+    
     [SerializeField]
     GameObject WiFiWaveSphere;
     [SerializeField]
     int sphereCount;
     [SerializeField]
-    Transform forwardDir;
-
+    Transform forwardDir;    
 
     float respawnTimer = 2;
     [SerializeField]
     float respawnTime;
 
-    
+    Camera mainCamera;
+    Camera topDownCam;
+    [SerializeField]
+    public bool routerActive = false;
+    [SerializeField]
+    GameObject UIHolder;
+        
 
 	// Use this for initialization
 	void Start () {
-
-
-
-
+        
+        mainCamera = Camera.main;
+        topDownCam = GameObject.Find("TopDownCam").GetComponent<Camera>();
+        topDownCam.gameObject.SetActive(false);
     }
 	
 	// Update is called once per frame
 	void Update () {
 
 
-        if (respawnTimer > respawnTime)
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            routerActive = false;
+            UIHolder.SetActive(false);
+            waveCount = 0;
+        }
+
+        if (routerActive)
+        {
+            mainCamera.gameObject.SetActive(false);
+            topDownCam.gameObject.SetActive(true);
+            UIHolder.SetActive(true);            
+        }
+        else
+        {
+            mainCamera.gameObject.SetActive(true);
+            topDownCam.gameObject.SetActive(false);
+        }
+
+        if (respawnTimer > respawnTime && routerActive)
         {
             instantiateSpheres();
         }
@@ -46,6 +72,7 @@ public class router : MonoBehaviour {
 
     void instantiateSpheres()
     {
+<<<<<<< HEAD
 
         float x;
 
@@ -53,6 +80,12 @@ public class router : MonoBehaviour {
         float y = transform.position.y;
 
 
+=======
+        
+        
+        float x;    
+        float y = transform.position.y;        
+>>>>>>> 173d947ecb70ad731b01089fc4a80dfa70ba0d49
         float z;
 
         float angle = 20f;

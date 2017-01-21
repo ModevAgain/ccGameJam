@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class interactableScript : MonoBehaviour {
 
+    router rout;
+
 	// Use this for initialization
 	void Start () {
-		
+        rout = GetComponent<router>();
 	}
 	
 	// Update is called once per frame
@@ -21,7 +23,8 @@ public class interactableScript : MonoBehaviour {
 
     public void activateRouter()
     {
-
+        
+        rout.routerActive = true;
         //TODO switch to TopDown
 
         

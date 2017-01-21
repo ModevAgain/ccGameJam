@@ -41,8 +41,7 @@ public class interactionScript : MonoBehaviour {
             }
             if (hit.collider.tag == "router")
             {
-                hit.transform.GetComponent<interactableScript>().activateRouter();
-                
+                hit.transform.GetComponent<interactableScript>().activateRouter();                
             }
         }
 

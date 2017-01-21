@@ -60,7 +60,11 @@ public class wiFiWave : MonoBehaviour {
 
     void OnCollisionEnter (Collision other)
     {
-        
+        if(other.gameObject.tag == "repeater")
+        {
+
+        }
+
         if(other.gameObject.tag == "outsideWall")
         {
             Destroy(gameObject);
@@ -73,7 +77,6 @@ public class wiFiWave : MonoBehaviour {
                 lastWall = other.gameObject;
 
                 color = GetComponent<Renderer>().material.color;
-                Debug.Log("hit");
                 color.a -= wallTransparancy;
                 GetComponent<Renderer>().material.color = color;
             }            
