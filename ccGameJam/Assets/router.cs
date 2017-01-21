@@ -10,26 +10,48 @@ public class router : MonoBehaviour {
     int sphereCount;
     [SerializeField]
     Transform forwardDir;
+
+
+    float respawnTimer = 2;
+    [SerializeField]
+    float respawnTime;
+
     
 
 	// Use this for initialization
 	void Start () {
 
-        instantiateSpheres();
+
 
 
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+
+
+        if (respawnTimer > respawnTime)
+        {
+            instantiateSpheres();
+        }
+        else
+        {
+            respawnTimer += 1 * Time.deltaTime;
+        }
+
+
+    }
+
+
 
     void instantiateSpheres()
     {
 
         float x;
+<<<<<<< HEAD
         float y = transform.position.y;
+=======
+>>>>>>> origin/nico_features
         float z;
 
         float angle = 20f;
@@ -43,10 +65,8 @@ public class router : MonoBehaviour {
             x = Mathf.Sin(Mathf.Deg2Rad * angle);
             z = Mathf.Cos(Mathf.Deg2Rad * angle);
 
-            GameObject temp = Instantiate<GameObject>(WiFiWaveSphere, new Vector3(transform.position.x + x, y, transform.position.z + z), new Quaternion(0,0,0,0), this.gameObject.transform);
+            GameObject temp = Instantiate<GameObject>(WiFiWaveSphere, new Vector3((transform.position.x + x), transform.position.y, (transform.position.z + z)), new Quaternion(0,0,0,0), this.gameObject.transform);
             temp.transform.LookAt(transform.position);
-            Debug.DrawLine(temp.transform.position, temp.GetComponent<wiFiWave>().transform.position, Color.red, 10f);
-            //line.SetPosition(i, new Vector3(x, y, z));
 
             angle += (360f / sphereCount);
         }
@@ -59,5 +79,7 @@ public class router : MonoBehaviour {
         {
 
         }
+        respawnTimer = 0;
+
     }
 }
