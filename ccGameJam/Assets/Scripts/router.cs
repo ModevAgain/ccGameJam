@@ -16,19 +16,32 @@ public class router : MonoBehaviour {
     [SerializeField]
     float respawnTime;
 
-    
+    Camera mainCamera;
+    Camera topDownCam;
+    [SerializeField]
+    public bool routerActive = false;
+        
 
 	// Use this for initialization
 	void Start () {
-
-
-
-
+        mainCamera = Camera.main;
+        topDownCam = GameObject.Find("TopDownCam").GetComponent<Camera>();
+        topDownCam.gameObject.SetActive(false);
     }
 	
 	// Update is called once per frame
 	void Update () {
 
+        if (routerActive)
+        {
+            mainCamera.gameObject.SetActive(false);
+            topDownCam.gameObject.SetActive(true);
+        }
+        else
+        {
+            mainCamera.gameObject.SetActive(true);
+            topDownCam.gameObject.SetActive(false);
+        }
 
         if (respawnTimer > respawnTime)
         {
