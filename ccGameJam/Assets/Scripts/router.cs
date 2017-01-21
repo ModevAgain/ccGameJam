@@ -11,7 +11,8 @@ public class router : MonoBehaviour {
     [SerializeField]
     int sphereCount;
     [SerializeField]
-    Transform forwardDir;    
+    Transform forwardDir;
+    
 
     float respawnTimer = 2;
     [SerializeField]
@@ -43,6 +44,8 @@ public class router : MonoBehaviour {
             UIHolder.SetActive(false);
             waveCount = 0;
         }
+
+        
 
         if (routerActive)
         {

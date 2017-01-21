@@ -23,26 +23,25 @@ public class interactionScript : MonoBehaviour {
         {
             checkForObject();
         }
-
-
 	}
-
-
+        
     void checkForObject()
     {
         RaycastHit hit;
 
         if(Physics.Raycast(crosshairObject.transform.position, crosshairObject.transform.forward,out hit))
         {
-            if(hit.collider.tag == "object")
+            if(hit.collider.tag == "pickable")
             {
                 hit.transform.GetComponent<interactableScript>().getPickedUp(pickedUpHolder.transform.position);
                 hit.transform.parent = pickedUpHolder.transform;
             }
-            if (hit.collider.tag == "router")
+            
+            else if (hit.collider.tag == "router")
             {
                 hit.transform.GetComponent<interactableScript>().activateRouter();                
             }
+            
         }
 
     }

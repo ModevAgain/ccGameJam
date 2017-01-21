@@ -7,17 +7,19 @@ public class wiFiWave : MonoBehaviour {
     [SerializeField]
     public GameObject forwardObj;
     [SerializeField]
-    float wallTransparancy;
+    float wallTransparancy = 0.3f;
     [SerializeField]
-    float timeTransparancy;
+    float reduceTransparencyTime = 0.1f;
     Color color;
     Material tempMaterial;
     Material transparentMaterial;
     [SerializeField]
     float speed;    
-    float transparancyTimer = 5;
+    float transparencyTimer = 5;
     [SerializeField]
-    float transparancyTime;
+    float transparencyTime = 1.0f;
+    [SerializeField]
+    float alpha;
 
     GameObject lastWall = null;
 
@@ -30,15 +32,16 @@ public class wiFiWave : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        alpha = GetComponent<Renderer>().material.color.a;
         transform.position = Vector3.Lerp(transform.position, transform.GetChild(0).transform.position, speed);
 
-        if (transparancyTimer > transparancyTime)
+        if (transparencyTimer > transparencyTime)
         {
             reduceTransparancy();            
         }
         else
         {
-            transparancyTimer += 1 * Time.deltaTime;
+            transparencyTimer += 1 * Time.deltaTime;
         }
 
         if (GetComponent<Renderer>().material.color.a <= 0.05)
@@ -53,9 +56,9 @@ public class wiFiWave : MonoBehaviour {
     void reduceTransparancy()
     {
         color = GetComponent<Renderer>().material.color;
-        color.a -= timeTransparancy;
+        color.a -= reduceTransparencyTime;
         GetComponent<Renderer>().material.color = color;
-        transparancyTimer = 0;
+        transparencyTimer = 0;
     }
 
     void OnCollisionEnter (Collision other)
