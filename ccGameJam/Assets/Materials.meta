@@ -1,8 +1,13 @@
 fileFormatVersion: 2
 guid: 8ba2fc289333fa84b905ba710f0fa273
 folderAsset: yes
+<<<<<<< HEAD
 timeCreated: 1484946487
 licenseType: Pro
+=======
+timeCreated: 1484945517
+licenseType: Free
+>>>>>>> origin/FloorPlan
 DefaultImporter:
   userData: 
   assetBundleName: 
