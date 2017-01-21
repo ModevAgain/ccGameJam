@@ -43,11 +43,14 @@ public class interactableScript : MonoBehaviour {
     
     void OnCollisionEnter(Collision other)
     {
+
+        
         if (other.gameObject.tag == "socket")
-        {
+        {            
             Destroy(gameObject.GetComponent<Rigidbody>());
             transform.parent = other.transform.parent;
             transform.position = other.transform.position;
+            gameObject.GetComponent<interactionScript>().ShowOutline(new Color(1, 0, 0, 0.5f), gameObject);
         }
     }
 }

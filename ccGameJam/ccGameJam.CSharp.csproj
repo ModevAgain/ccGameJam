@@ -85,11 +85,17 @@
     <Compile Include="Assets\Scripts\interactableScript.cs" />
     <Compile Include="Assets\Scripts\interactionScript.cs" />
     <Compile Include="Assets\Scripts\reflector.cs" />
+    <Compile Include="Assets\Scripts\repeater.cs" />
     <Compile Include="Assets\Scripts\router.cs" />
     <Compile Include="Assets\Scripts\socket.cs" />
+    <Compile Include="Assets\Scripts\startingScript.cs" />
     <Compile Include="Assets\Scripts\wiFiWave.cs" />
+    <Compile Include="Assets\highlightShader.cs" />
+    <Compile Include="Assets\startingManager.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Shader\OutlineSelectShader.shader" />
+    <None Include="Assets\Shader\OutlineSelectShader_Bumped.shader" />
     <None Include="Assets\Sink, Toilet and Radiator Set\Read Me\Hello! Read Me!.txt" />
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />

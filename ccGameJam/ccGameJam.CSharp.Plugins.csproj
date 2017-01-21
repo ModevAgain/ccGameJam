@@ -116,6 +116,8 @@
     <Compile Include="Assets\Standard Assets\Utility\WaypointProgressTracker.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Shader\OutlineSelectShader.shader" />
+    <None Include="Assets\Shader\OutlineSelectShader_Bumped.shader" />
     <None Include="Assets\Sink, Toilet and Radiator Set\Read Me\Hello! Read Me!.txt" />
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
