@@ -48,13 +48,11 @@ public class router : MonoBehaviour {
     {
 
         float x;
-<<<<<<< HEAD:ccGameJam/Assets/router.cs
+
 
         float y = transform.position.y;
 
-=======
-        float y = transform.position.y;
->>>>>>> ab9e34ef2eae87584b5723185c665f7d93e7f290:ccGameJam/Assets/Scripts/router.cs
+
         float z;
 
         float angle = 20f;
