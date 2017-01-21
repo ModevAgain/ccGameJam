@@ -48,10 +48,9 @@ public class router : MonoBehaviour {
     {
 
         float x;
-<<<<<<< HEAD
+
         float y = transform.position.y;
-=======
->>>>>>> origin/nico_features
+
         float z;
 
         float angle = 20f;
