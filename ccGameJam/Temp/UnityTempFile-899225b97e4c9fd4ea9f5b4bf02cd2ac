@@ -86,6 +86,7 @@ Assets/Scripts/interactionScript.cs
 Assets/Scripts/reflector.cs
 Assets/Scripts/router.cs
 Assets/Scripts/wiFiWave.cs
+Assets/repeater.cs
 -r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\unity\System.Runtime.Serialization.dll"
 -r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\unity\System.Xml.Linq.dll"
 -r:"C:\Program Files\Unity\Editor\Data\MonoBleedingEdge\lib\mono\unity\UnityScript.dll"

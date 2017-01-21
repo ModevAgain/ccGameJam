@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class router : MonoBehaviour {
 
+    int waveCount = 0;
+    
     [SerializeField]
     GameObject WiFiWaveSphere;
     [SerializeField]
     int sphereCount;
     [SerializeField]
-    Transform forwardDir;
-
+    Transform forwardDir;    
 
     float respawnTimer = 2;
     [SerializeField]
@@ -26,6 +27,7 @@ public class router : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        
         mainCamera = Camera.main;
         topDownCam = GameObject.Find("TopDownCam").GetComponent<Camera>();
         topDownCam.gameObject.SetActive(false);
@@ -39,6 +41,7 @@ public class router : MonoBehaviour {
         {
             routerActive = false;
             UIHolder.SetActive(false);
+            waveCount = 0;
         }
 
         if (routerActive)
@@ -69,6 +72,7 @@ public class router : MonoBehaviour {
 
     void instantiateSpheres()
     {
+        
         
         float x;    
         float y = transform.position.y;        

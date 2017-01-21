@@ -60,6 +60,11 @@ public class wiFiWave : MonoBehaviour {
 
     void OnCollisionEnter (Collision other)
     {
+        if(other.gameObject.tag == "repeater")
+        {
+
+        }
+
         if(other.gameObject.tag == "outsideWall")
         {
             Destroy(gameObject);
