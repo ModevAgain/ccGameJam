@@ -72,20 +72,12 @@ public class router : MonoBehaviour {
 
     void instantiateSpheres()
     {
-<<<<<<< HEAD
 
-        float x;
-
-
-        float y = transform.position.y;
-
-
-=======
         
         
         float x;    
         float y = transform.position.y;        
->>>>>>> 173d947ecb70ad731b01089fc4a80dfa70ba0d49
+
         float z;
 
         float angle = 20f;
