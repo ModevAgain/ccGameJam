@@ -7,14 +7,19 @@ public class wiFiWave : MonoBehaviour {
     [SerializeField]
     public GameObject forwardObj;
     [SerializeField]
-    float transparancy;
+    float wallTransparancy;
+    [SerializeField]
+    float timeTransparancy;
     Color color;
     Material tempMaterial;
     Material transparentMaterial;
     [SerializeField]
-    float speed;
+    float speed;    
+    float transparancyTimer = 5;
     [SerializeField]
-    GameObject child;
+    float transparancyTime;
+
+    GameObject lastWall = null;
 
     // Use this for initialization
     void Start () {
@@ -25,12 +30,31 @@ public class wiFiWave : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        child = transform.GetChild(0).gameObject;
         transform.position = Vector3.Lerp(transform.position, transform.GetChild(0).transform.position, speed);
 
-	}
-    
+        if (transparancyTimer > transparancyTime)
+        {
+            reduceTransparancy();            
+        }
+        else
+        {
+            transparancyTimer += 1 * Time.deltaTime;
+        }
 
+        if (GetComponent<Renderer>().material.color.a == 0)
+        {
+            Destroy(gameObject);
+        }
+
+    }
+    
+    void reduceTransparancy()
+    {
+        color = GetComponent<Renderer>().material.color;
+        color.a -= timeTransparancy;
+        GetComponent<Renderer>().material.color = color;
+        transparancyTimer = 0;
+    }
 
     void OnCollisionEnter (Collision other)
     {
@@ -42,12 +66,17 @@ public class wiFiWave : MonoBehaviour {
 
         if(other.gameObject.tag == "insideWall")
         {
+            if(lastWall != other.gameObject)
+            {
+                lastWall = other.gameObject;
 
-            color = GetComponent<Renderer>().material.color;
-            Debug.Log(color);
-            color.a -= transparancy;
-            GetComponent<Renderer>().material.color = color;
-            Debug.Log(color);
+                color = GetComponent<Renderer>().material.color;
+                Debug.Log("hit");
+                color.a -= wallTransparancy;
+                GetComponent<Renderer>().material.color = color;
+            }
+
+            
         }
     }
 }
