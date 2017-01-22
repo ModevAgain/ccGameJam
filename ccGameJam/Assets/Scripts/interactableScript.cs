@@ -5,6 +5,8 @@ using UnityEngine;
 public class interactableScript : MonoBehaviour {
 
     router rout;
+    public bool placable;
+    Collision col;
 
     // Use this for initialization
     void Start () {
@@ -14,19 +16,10 @@ public class interactableScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            releaseObject();
-        }       
+        
     }    
 
-    public void releaseObject()
-    {
-        transform.parent = null;
-        gameObject.AddComponent<Rigidbody>();
-        //GetComponent<Rigidbody>().useGravity = true;
-        //GetComponent<Rigidbody>().isKinematic = false;
-    }
+    
 
     public void getPickedUp(Vector3 position)
     {
@@ -43,18 +36,24 @@ public class interactableScript : MonoBehaviour {
     
     void OnCollisionEnter(Collision other)
     {
-
-        
-        if (other.gameObject.tag == "socket")
-        {            
+               
+        if (other.gameObject.tag == "repeaterSocket" && transform.tag == "repeater")
+        {
+            
+            Debug.Log("Rep funzt");
             Destroy(gameObject.GetComponent<Rigidbody>());
             transform.parent = other.transform.parent;
             transform.position = other.transform.position;
-<<<<<<< HEAD
-            gameObject.GetComponent<interactionScript>().ShowOutline(new Color(1, 0, 0, 0.5f), gameObject);
-=======
+            transform.rotation = other.transform.rotation;            
+        }
+        if (other.gameObject.tag == "reflectableSocket" && transform.tag == "reflectable")
+        {
+            Debug.Log("Mirr funzt");
+            Destroy(gameObject.GetComponent<Rigidbody>());
+            transform.parent = other.transform.parent;
+            transform.position = other.transform.position;
             transform.rotation = other.transform.rotation;
->>>>>>> origin/moe_working
+            placable = true;
         }
     }
 }

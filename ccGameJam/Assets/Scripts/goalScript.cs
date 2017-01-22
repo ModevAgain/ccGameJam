@@ -14,7 +14,7 @@ public class goalScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        signalText = GameObject.FindGameObjectWithTag("signalText").GetComponent<Text>();
+        
 
 	}
 	
@@ -25,8 +25,8 @@ public class goalScript : MonoBehaviour {
 
     public void registerWave(float trans)
     {
-
-        signalText.text = 10*(1 - trans) + "0% of the original signal reached the toilet";
+        signalText = GameObject.FindGameObjectWithTag("signalText").GetComponent<Text>();
+        signalText.text = 10*(trans) + "0% of the original signal reached the toilet";
 
         for (int i = 0; i < 20; i++)
         {

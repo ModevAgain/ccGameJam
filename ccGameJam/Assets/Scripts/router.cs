@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class router : MonoBehaviour {
 
@@ -54,12 +55,16 @@ public class router : MonoBehaviour {
         {
             mainCamera.gameObject.SetActive(false);
             topDownCam.gameObject.SetActive(true);
-            UIHolder.SetActive(true);            
+            UIHolder.SetActive(true);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<interactionScript>().enabled = false;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>().enabled = false;
         }
         else
         {
             mainCamera.gameObject.SetActive(true);
             topDownCam.gameObject.SetActive(false);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<interactionScript>().enabled = true;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>().enabled = true;
         }
 
         if (respawnTimer > respawnTime && routerActive)
@@ -105,7 +110,7 @@ public class router : MonoBehaviour {
 
 
 
-        emp.Play();
+
 
         
         respawnTimer = 0;

@@ -65,7 +65,6 @@ public class wiFiWave : MonoBehaviour {
     {
         if(other.gameObject.tag == "repeater")   
         {
-            Debug.Log("tag funzt");
             other.gameObject.GetComponent<repeater>().startRepeating(gameObject.GetComponent<Renderer>().material.color.a,transform.parent.gameObject);
         }
 
@@ -98,6 +97,11 @@ public class wiFiWave : MonoBehaviour {
             Quaternion lookDir = Quaternion.LookRotation(newDir);
             transform.rotation = lookDir;
 
+        }
+
+        if(other.gameObject.tag == "goal")
+        {
+            other.gameObject.GetComponent<goalScript>().registerWave(GetComponent<Renderer>().material.color.a);
         }
 
     }

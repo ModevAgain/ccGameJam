@@ -25,9 +25,16 @@ public class interactionScript : MonoBehaviour {
             
             Ray newRay = new Ray(pickedUpHolder.transform.position, pickedUpHolder.transform.position - transform.position);
             RaycastHit hit;
+
             if (Physics.Raycast(newRay, out hit, 0.5f))
             {
-                ShowOutline(new Color(1, 0, 0, 0.5f), pickedUpHolder.transform.GetChild(0).gameObject);
+                Debug.Log(hit.transform.tag + "," + pickedUpHolder.transform.GetChild(0).tag + "Socket");
+                if (hit.transform.tag == pickedUpHolder.transform.GetChild(0).tag + "Socket")
+                {
+                    ShowOutline(new Color(0, 1, 0, 0.5f), pickedUpHolder.transform.GetChild(0).gameObject);
+                }
+
+                else ShowOutline(new Color(1, 0, 0, 0.5f), pickedUpHolder.transform.GetChild(0).gameObject);
             }
             else
             {
@@ -41,7 +48,21 @@ public class interactionScript : MonoBehaviour {
             checkForObjectWithButton();
         }
         else checkForObject();
-	}
+
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            releaseObject();
+        }
+    }
+
+    public void releaseObject()
+    {
+        GameObject tempObj = pickedUpHolder.transform.GetChild(0).gameObject;
+        tempObj.transform.parent = null;
+        tempObj.AddComponent<Rigidbody>();
+        //GetComponent<Rigidbody>().useGravity = true;
+        //GetComponent<Rigidbody>().isKinematic = false;
+    }
 
     void checkForObject()
     {
@@ -50,13 +71,17 @@ public class interactionScript : MonoBehaviour {
         if (Physics.Raycast(crosshairObject.transform.position, crosshairObject.transform.forward, out hit))
         {
 
-            if (hit.collider.tag == "pickable")
+            if (hit.collider.tag == "pickable" || hit.collider.tag == "repeater" || hit.collider.tag == "reflectable")
             {
                 highlightedObject = hit.transform.gameObject;
                 ShowOutline(new Color(0, 1, 0, 0.5f), highlightedObject);
-
-
             }
+            else if(hit.collider.tag == "router")
+            {
+                highlightedObject = hit.transform.gameObject;
+                ShowOutline(new Color(0, 0, 1, 0.5f), highlightedObject);
+            }
+
             else if (highlightedObject != null)
             {
                 HideOutline(highlightedObject);
@@ -76,7 +101,7 @@ public class interactionScript : MonoBehaviour {
 
     public void HideOutline(GameObject obj)
     {
-        Debug.Log("Hide outline");
+
         if (obj.GetComponent<Renderer>() != null)
         {
             obj.GetComponent<Renderer>().material.shader = Shader.Find("Diffuse");
@@ -90,12 +115,8 @@ public class interactionScript : MonoBehaviour {
 
         if(Physics.Raycast(crosshairObject.transform.position, crosshairObject.transform.forward,out hit))
         {
-<<<<<<< HEAD
 
-            if(hit.collider.tag == "pickable")
-=======
-            if(hit.collider.tag == "pickable" || hit.collider.tag == "repeater")
->>>>>>> origin/moe_working
+            if(hit.collider.tag == "pickable" || hit.collider.tag == "repeater" || hit.collider.tag == "reflectable")
             {
                 hit.transform.GetComponent<interactableScript>().getPickedUp(pickedUpHolder.transform.position);
                 hit.transform.parent = pickedUpHolder.transform;
@@ -116,7 +137,7 @@ public class interactionScript : MonoBehaviour {
         MeshRenderer meshRenderer = obj.GetComponent<MeshRenderer>();
         if (meshRenderer == null)
         {
-            Debug.LogError("mesh renderer is null");
+
             return;
         }
         Material[] materials = meshRenderer.materials;

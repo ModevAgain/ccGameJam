@@ -54,6 +54,12 @@ public class repeater : MonoBehaviour {
             {
                 respawnTimer += 1 * Time.deltaTime;
             }
+
+        if (GameObject.FindGameObjectWithTag("router").GetComponent<router>().routerActive)
+        {
+            GetComponent<interactableScript>().enabled = false;
+        }
+        else GetComponent<interactableScript>().enabled = true;
     }
 
     public void startRepeating(float trans, GameObject waveObject)
@@ -62,7 +68,6 @@ public class repeater : MonoBehaviour {
         {
             transValue = trans + addForRepeating;
             repeaterActive = true;
-            Debug.Log("startRepeating funzt");
         }
        
     }
@@ -83,7 +88,7 @@ public class repeater : MonoBehaviour {
             x = Mathf.Sin(Mathf.Deg2Rad * angle);
             z = Mathf.Cos(Mathf.Deg2Rad * angle);
 
-            GameObject temp = Instantiate<GameObject>(WiFiWaveSphere, new Vector3((transform.position.x + x), transform.position.y, (transform.position.z + z)), new Quaternion(0, 0, 0, 0), this.gameObject.transform);
+            GameObject temp = Instantiate<GameObject>(WiFiWaveSphere, new Vector3((transform.position.x + x), transform.position.y, (transform.position.z + z)), new Quaternion(0, 0, 0, 0));
             temp.transform.LookAt(transform.position);
             Color tempColor = temp.GetComponent<Renderer>().material.color;
             tempColor.a = transValue;

@@ -91,6 +91,7 @@
     <Compile Include="Assets\Scripts\startingScript.cs" />
     <Compile Include="Assets\Scripts\wiFiWave.cs" />
     <Compile Include="Assets\highlightShader.cs" />
+    <Compile Include="Assets\reflectableScript.cs" />
     <Compile Include="Assets\startingManager.cs" />
   </ItemGroup>
   <ItemGroup>
