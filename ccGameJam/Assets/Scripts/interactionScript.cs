@@ -28,7 +28,7 @@ public class interactionScript : MonoBehaviour {
 
             if (Physics.Raycast(newRay, out hit, 0.5f))
             {
-                Debug.Log(hit.transform.tag + "," + pickedUpHolder.transform.GetChild(0).tag + "Socket");
+                //Debug.Log(hit.transform.tag + "," + pickedUpHolder.transform.GetChild(0).tag + "Socket");
                 if (hit.transform.tag == pickedUpHolder.transform.GetChild(0).tag + "Socket")
                 {
                     ShowOutline(new Color(0, 1, 0, 0.5f), pickedUpHolder.transform.GetChild(0).gameObject);
@@ -46,6 +46,8 @@ public class interactionScript : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             checkForObjectWithButton();
+            
+                
         }
         else checkForObject();
 
@@ -119,7 +121,9 @@ public class interactionScript : MonoBehaviour {
             if(hit.collider.tag == "pickable" || hit.collider.tag == "repeater" || hit.collider.tag == "reflectable")
             {
                 hit.transform.GetComponent<interactableScript>().getPickedUp(pickedUpHolder.transform.position);
+                Debug.Log(hit.transform.parent);
                 hit.transform.parent = pickedUpHolder.transform;
+                Debug.Log(hit.transform.parent);
             }
             
             else if (hit.collider.tag == "router")

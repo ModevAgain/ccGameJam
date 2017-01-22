@@ -57,7 +57,7 @@ public class router : MonoBehaviour {
             topDownCam.gameObject.SetActive(true);
             UIHolder.SetActive(true);
             GameObject.FindGameObjectWithTag("Player").GetComponent<interactionScript>().enabled = false;
-            GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>().enabled = false;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>().enabled = false;           
         }
         else
         {

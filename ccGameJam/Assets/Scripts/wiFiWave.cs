@@ -49,6 +49,13 @@ public class wiFiWave : MonoBehaviour {
             Destroy(gameObject);
         }
 
+        if(gameObject.GetComponent<Renderer>().material.color.a > 1f)
+        {
+            color = GetComponent<Renderer>().material.color;
+            color.a = 0.999f;
+            GetComponent<Renderer>().material.color = color;
+        }
+
         //Debug.DrawRay(transform.position, -transform.forward);
 
     }
@@ -66,6 +73,7 @@ public class wiFiWave : MonoBehaviour {
         if(other.gameObject.tag == "repeater")   
         {
             other.gameObject.GetComponent<repeater>().startRepeating(gameObject.GetComponent<Renderer>().material.color.a,transform.parent.gameObject);
+            
         }
 
         if(other.gameObject.tag == "outsideWall")
@@ -87,6 +95,7 @@ public class wiFiWave : MonoBehaviour {
 
         if(other.gameObject.tag == "reflectable")
         {
+            Debug.Log("tag funzt");
             Vector3 normalVec = other.contacts[0].normal;
             Vector3 forwardVec = transform.forward;
             float ang = Vector3.Angle(forwardVec, normalVec); 

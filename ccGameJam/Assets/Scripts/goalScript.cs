@@ -25,8 +25,9 @@ public class goalScript : MonoBehaviour {
 
     public void registerWave(float trans)
     {
+        if(trans > 0.3f) { 
         signalText = GameObject.FindGameObjectWithTag("signalText").GetComponent<Text>();
-        signalText.text = 10*(trans) + "0% of the original signal reached the toilet";
+        signalText.text = 100*(trans) + "0% signal";
 
         for (int i = 0; i < 20; i++)
         {
@@ -35,8 +36,14 @@ public class goalScript : MonoBehaviour {
             signalText.color = newColor;
         }
 
-        if (neededTransparency <= trans) Debug.Log("Win");
+            if (neededTransparency <= trans)
+            {
+                signalText.text = "You did it!";
+                return;
+            }
 
+
+        }
     }
 
     void deactivateSignalText()

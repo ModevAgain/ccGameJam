@@ -28,10 +28,12 @@ public class repeater : MonoBehaviour {
 
     float transValue;
 
+    public bool isSnapped;
 
 
 
 
+    int x = 0;
 
 
     // Use this for initialization
@@ -44,9 +46,7 @@ public class repeater : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
-
-            if (respawnTimer > respawnTime && repeaterActive)
+        if (respawnTimer > respawnTime && repeaterActive)
             {
                 instantiateSpheres();
             }
@@ -58,16 +58,37 @@ public class repeater : MonoBehaviour {
         if (GameObject.FindGameObjectWithTag("router").GetComponent<router>().routerActive)
         {
             GetComponent<interactableScript>().enabled = false;
+            
+                Rigidbody rigid = gameObject.AddComponent<Rigidbody>();
+                rigid.useGravity = false;
+               
+                rigid.constraints = RigidbodyConstraints.FreezePosition|RigidbodyConstraints.FreezeRotation;
+             
+            
         }
-        else GetComponent<interactableScript>().enabled = true;
+        else {
+
+            GetComponent<interactableScript>().enabled = true;
+            repeaterActive = false;
+
+        }
+        
     }
 
     public void startRepeating(float trans, GameObject waveObject)
     {
-        if(!repeaterActive)
+
+
+        if (!repeaterActive && isSnapped)
         {
-            transValue = trans + addForRepeating;
-            repeaterActive = true;
+
+
+                    transValue = trans + addForRepeating;
+                    repeaterActive = true;
+                    isSnapped = false;
+                
+            
+           
         }
        
     }
